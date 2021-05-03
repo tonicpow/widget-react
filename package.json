@@ -1,0 +1,44 @@
+{
+  "name": "@tonicpow/widget-react",
+  "version": "0.0.1",
+  "description": "Official react component for rendering TonicPow Widgets and Share buttons",
+  "author": {
+    "name": "TonicPow",
+    "email": "support@tonicpow.com",
+    "url": "https://docs.tonicpow.com"
+  },
+  "contributors": [
+    {
+      "name": "Satchmo",
+      "url": "https://github.com/rohenaz/"
+    },
+    {
+      "name": "MrZ",
+      "url": "https://github.com/mrz1836/"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/tonicpow/widget-react/issues"
+  },
+  "homepage": "https://docs.tonicpow.com",
+  "scripts": {
+    "build": "",
+    "deploy": "npm publish --access public"
+  },
+  "license": "Open BSV",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tonicpow/widget-react/"
+  },
+  "keywords": [
+    "tonic",
+    "widget",
+    "react",
+    "bitcoin",
+    "bsv"
+  ],
+  "devDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
