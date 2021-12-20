@@ -55,14 +55,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var index_1 = require("index");
 var react_1 = __importStar(require("react"));
 var tonicpow_1 = require("../context/tonicpow");
 var common_1 = require("../types/common");
 var Widget = function (_a) {
-    var className = _a.className, height = _a.height, widgetId = _a.widgetId, width = _a.width, _b = _a.rotateInterval, rotateInterval = _b === void 0 ? 0 : _b, _c = _a.widgetType, widgetType = _c === void 0 ? "banner" : _c, _d = _a.buttonText, buttonText = _d === void 0 ? "Get Link" : _d, _e = _a.buttonTextAuth, buttonTextAuth = _e === void 0 ? "Log In" : _e, _f = _a.buttonTextDone, buttonTextDone = _f === void 0 ? "Copied" : _f, _g = _a.buttonTextLoading, buttonTextLoading = _g === void 0 ? "Loading" : _g, target = _a.target;
-    react_1.default.useEffect(function () {
-        console.log({ widgetId: widgetId });
-    }, [widgetId]);
+    var className = _a.className, height = _a.height, widgetId = _a.widgetId, width = _a.width, _b = _a.rotateInterval, rotateInterval = _b === void 0 ? 0 : _b, _c = _a.widgetType, widgetType = _c === void 0 ? index_1.WidgetType.Banner : _c, _d = _a.buttonText, buttonText = _d === void 0 ? "Get Link" : _d, _e = _a.buttonTextAuth, buttonTextAuth = _e === void 0 ? "Log In" : _e, _f = _a.buttonTextDone, buttonTextDone = _f === void 0 ? "Copied" : _f, _g = _a.buttonTextLoading, buttonTextLoading = _g === void 0 ? "Loading" : _g, target = _a.target;
     if (!target) {
         target = window.location.href;
     }

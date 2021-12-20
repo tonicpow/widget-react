@@ -24,9 +24,6 @@ export interface WidgetProps {
 }
 
 const TonicPowWidget: React.FC<WidgetProps> = ({ widgetId }) => {
-  React.useEffect(() => {
-    console.log("floobygoo", { widgetId });
-  }, [widgetId]);
   return (
     <TonicPowProvider>
       <Widget widgetId={widgetId} />
