@@ -1,4 +1,5 @@
 # Widget (React Component)
+
 > Easy integration using React
 
 [![last commit](https://img.shields.io/github/last-commit/tonicpow/widget-react.svg?style=flat&v=1)](https://github.com/tonicpow/widget-react/commits/master)
@@ -26,7 +27,9 @@
 
 ## Installation
 
-(TODO)
+```shell script
+yarn
+```
 
 <br/>
 
@@ -116,6 +119,19 @@ Always use the language's best practices and don't optimize early :P
 <br/>
 
 ## Usage
+
+To see the available widgets and run in standalone mode, we've conveniently added all components to storybook.
+
+```shell script
+yarn storybook
+```
+
+To use this in your project, just do
+
+```
+import TonicPowWidget from "@tonicpow/widget-react"
+<TonicPowWidget widgetId="your-widget-id">
+```
 
 We are using it! Visit [our website](https://tonicpow.com) to see it in action.
 

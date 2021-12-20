@@ -38,14 +38,11 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useTonicPow = exports.TonicPowProvider = void 0;
+var tPow = __importStar(require("@tonicpow/widget"));
 var querystring_1 = require("querystring");
 var react_1 = __importStar(require("react"));
-var react_load_script_1 = __importDefault(require("react-load-script"));
 var storage_1 = require("../../utils/storage");
 var TonicPowContext = react_1.default.createContext(undefined);
 var TonicPowProvider = function (props) {
@@ -69,12 +66,11 @@ var TonicPowProvider = function (props) {
     var getWidget = (0, react_1.useCallback)(function (widgetId) {
         return widgets.filter(function (w) { return w.id === widgetId; })[0] || null;
     }, [widgets]);
-    var handleScriptLoad = (0, react_1.useCallback)(function () {
-        var tPow = window.TonicPow;
+    (0, react_1.useEffect)(function () {
         tPow.options = { onWidgetLoaded: onWidgetLoaded };
         setTonicPow(tPow);
         setReady(true);
-    }, [onWidgetLoaded]);
+    }, []);
     (0, react_1.useEffect)(function () {
         if ((tncpwSessionQueryParam === null || tncpwSessionQueryParam === void 0 ? void 0 : tncpwSessionQueryParam.current) != null) {
             // TODO: Validate
@@ -89,7 +85,6 @@ var TonicPowProvider = function (props) {
         getWidget: getWidget,
     }); }, [sessionId, ready, tonicPow, widgets, getWidget]);
     return (react_1.default.createElement(react_1.default.Fragment, null,
-        react_1.default.createElement(react_load_script_1.default, { async: true, defer: true, url: "../../../node_modules/@tonicpow/widget/dist/tonicpow.js", onLoad: handleScriptLoad }),
         react_1.default.createElement(TonicPowContext.Provider, __assign({ value: value }, props))));
 };
 exports.TonicPowProvider = TonicPowProvider;

@@ -1,22 +1,7 @@
+import { WidgetProps, WidgetType } from "index";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useTonicPow } from "../context/tonicpow";
 import { FetchStatus } from "../types/common";
-
-export interface WidgetProps {
-  className?: string;
-  widgetId: string;
-  width?: number;
-  height?: number;
-  rotateInterval?: number;
-  widgetType?: "banner" | "share";
-  buttonText?: string;
-  buttonTextAuth?: string;
-  buttonTextDone?: string;
-  buttonTextLoading?: string;
-  onSuccess?: (data: any) => void;
-  onError?: (error: Error) => void;
-  target?: string;
-}
 
 const Widget: React.FC<WidgetProps> = ({
   className,
@@ -24,7 +9,7 @@ const Widget: React.FC<WidgetProps> = ({
   widgetId,
   width,
   rotateInterval = 0,
-  widgetType = "banner",
+  widgetType = WidgetType.Banner,
   buttonText = "Get Link",
   buttonTextAuth = "Log In",
   buttonTextDone = "Copied",
@@ -63,6 +48,7 @@ const Widget: React.FC<WidgetProps> = ({
 
   useEffect(() => {
     const load = async () => {
+      console.log("loading");
       setWidgetStatus(FetchStatus.Loading);
       try {
         await tonicPow?.load();
@@ -78,7 +64,8 @@ const Widget: React.FC<WidgetProps> = ({
       }
     };
 
-    if (widgetStatus === FetchStatus.Idle) {
+    console.log("should we load?", widgetId);
+    if (!!widgetId && widgetStatus === FetchStatus.Idle) {
       load();
     }
   }, [
@@ -123,26 +110,29 @@ const Widget: React.FC<WidgetProps> = ({
     );
   }, [widgetId, buttonText, buttonTextAuth, buttonTextDone, buttonTextLoading]);
 
-  return widgetType === "share" ? (
-    renderShareButton
-  ) : (
-    <>
-      <div className="flex w-full p-4">
-        {FetchStatus.Error !== widgetStatus && (
-          <div
-            className={`transition duration-700 ease-in-out ${
-              widgetStatus === FetchStatus.Idle ||
-              widgetStatus === FetchStatus.Loading
-                ? "opacity-0"
-                : "opacity-100"
-            } tonicpow-widget ${className ? className : ""}`}
-            data-widget-id={`${widgetId}`}
-            style={{ width: imgWidth, height: imgHeight }}
-          ></div>
-        )}
-      </div>
-    </>
+  const renderDisplayWidget = useMemo(
+    () => (
+      <>
+        <div className="flex w-full p-4">
+          {FetchStatus.Error !== widgetStatus && (
+            <div
+              className={`transition duration-700 ease-in-out ${
+                widgetStatus === FetchStatus.Idle ||
+                widgetStatus === FetchStatus.Loading
+                  ? "opacity-0"
+                  : "opacity-100"
+              } tonicpow-widget ${className ? className : ""}`}
+              data-widget-id={`${widgetId}`}
+              style={{ width: imgWidth, height: imgHeight }}
+            ></div>
+          )}
+        </div>
+      </>
+    ),
+    [widgetId, imgWidth, imgHeight, className, widgetStatus]
   );
+
+  return widgetType === "share" ? renderShareButton : renderDisplayWidget;
 };
 
 export default Widget;

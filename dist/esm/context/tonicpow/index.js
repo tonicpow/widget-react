@@ -18,9 +18,9 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
+import * as tPow from "@tonicpow/widget";
 import { parse } from "querystring";
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState, } from "react";
-import Script from "react-load-script";
 import { useLocalStorage } from "../../utils/storage";
 var TonicPowContext = React.createContext(undefined);
 export var TonicPowProvider = function (props) {
@@ -44,12 +44,11 @@ export var TonicPowProvider = function (props) {
     var getWidget = useCallback(function (widgetId) {
         return widgets.filter(function (w) { return w.id === widgetId; })[0] || null;
     }, [widgets]);
-    var handleScriptLoad = useCallback(function () {
-        var tPow = window.TonicPow;
+    useEffect(function () {
         tPow.options = { onWidgetLoaded: onWidgetLoaded };
         setTonicPow(tPow);
         setReady(true);
-    }, [onWidgetLoaded]);
+    }, []);
     useEffect(function () {
         if ((tncpwSessionQueryParam === null || tncpwSessionQueryParam === void 0 ? void 0 : tncpwSessionQueryParam.current) != null) {
             // TODO: Validate
@@ -64,7 +63,6 @@ export var TonicPowProvider = function (props) {
         getWidget: getWidget,
     }); }, [sessionId, ready, tonicPow, widgets, getWidget]);
     return (React.createElement(React.Fragment, null,
-        React.createElement(Script, { async: true, defer: true, url: "../../../node_modules/@tonicpow/widget/dist/tonicpow.js", onLoad: handleScriptLoad }),
         React.createElement(TonicPowContext.Provider, __assign({ value: value }, props))));
 };
 export var useTonicPow = function () {

@@ -39,6 +39,9 @@ import { useTonicPow } from "../context/tonicpow";
 import { FetchStatus } from "../types/common";
 var Widget = function (_a) {
     var className = _a.className, height = _a.height, widgetId = _a.widgetId, width = _a.width, _b = _a.rotateInterval, rotateInterval = _b === void 0 ? 0 : _b, _c = _a.widgetType, widgetType = _c === void 0 ? "banner" : _c, _d = _a.buttonText, buttonText = _d === void 0 ? "Get Link" : _d, _e = _a.buttonTextAuth, buttonTextAuth = _e === void 0 ? "Log In" : _e, _f = _a.buttonTextDone, buttonTextDone = _f === void 0 ? "Copied" : _f, _g = _a.buttonTextLoading, buttonTextLoading = _g === void 0 ? "Loading" : _g, target = _a.target;
+    React.useEffect(function () {
+        console.log({ widgetId: widgetId });
+    }, [widgetId]);
     if (!target) {
         target = window.location.href;
     }
@@ -64,6 +67,7 @@ var Widget = function (_a) {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        console.log("loading");
                         setWidgetStatus(FetchStatus.Loading);
                         _a.label = 1;
                     case 1:
@@ -86,7 +90,8 @@ var Widget = function (_a) {
                 }
             });
         }); };
-        if (widgetStatus === FetchStatus.Idle) {
+        console.log("should we load?", widgetId);
+        if (!!widgetId && widgetStatus === FetchStatus.Idle) {
             load();
         }
     }, [
@@ -113,11 +118,12 @@ var Widget = function (_a) {
     var renderShareButton = useMemo(function () {
         return (React.createElement("div", { className: "tonicpow-widget h-12 w-full", "data-widget-type": "share-button", "data-button-id": widgetId, "data-environment": "production", "data-width": width, "data-height": height, "data-get-link-text": buttonText, "data-auth-text": buttonTextAuth, "data-done-text": buttonTextDone, "data-error-text": "Error", "data-loading-text": buttonTextLoading, "data-target": target }));
     }, [widgetId, buttonText, buttonTextAuth, buttonTextDone, buttonTextLoading]);
-    return widgetType === "share" ? (renderShareButton) : (React.createElement(React.Fragment, null,
+    var renderDisplayWidget = useMemo(function () { return (React.createElement(React.Fragment, null,
         React.createElement("div", { className: "flex w-full p-4" }, FetchStatus.Error !== widgetStatus && (React.createElement("div", { className: "transition duration-700 ease-in-out ".concat(widgetStatus === FetchStatus.Idle ||
                 widgetStatus === FetchStatus.Loading
                 ? "opacity-0"
-                : "opacity-100", " tonicpow-widget ").concat(className ? className : ""), "data-widget-id": "".concat(widgetId), style: { width: imgWidth, height: imgHeight } })))));
+                : "opacity-100", " tonicpow-widget ").concat(className ? className : ""), "data-widget-id": "".concat(widgetId), style: { width: imgWidth, height: imgHeight } }))))); }, [widgetId, imgWidth, imgHeight, className, widgetStatus]);
+    return widgetType === "share" ? renderShareButton : renderDisplayWidget;
 };
 export default Widget;
 //# sourceMappingURL=widget.js.map
