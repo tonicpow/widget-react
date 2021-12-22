@@ -1,23 +1,3 @@
-"use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -54,40 +34,39 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var index_1 = require("index");
-var react_1 = __importStar(require("react"));
-var tonicpow_1 = require("../context/tonicpow");
-var common_1 = require("../types/common");
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useTonicPow } from "../../context/tonicpow";
+import { WidgetType } from "../../index";
+import { FetchStatus } from "../../types/common";
 var Widget = function (_a) {
-    var className = _a.className, height = _a.height, widgetId = _a.widgetId, width = _a.width, _b = _a.rotateInterval, rotateInterval = _b === void 0 ? 0 : _b, _c = _a.widgetType, widgetType = _c === void 0 ? index_1.WidgetType.Banner : _c, _d = _a.buttonText, buttonText = _d === void 0 ? "Get Link" : _d, _e = _a.buttonTextAuth, buttonTextAuth = _e === void 0 ? "Log In" : _e, _f = _a.buttonTextDone, buttonTextDone = _f === void 0 ? "Copied" : _f, _g = _a.buttonTextLoading, buttonTextLoading = _g === void 0 ? "Loading" : _g, target = _a.target;
+    var className = _a.className, height = _a.height, widgetId = _a.widgetId, width = _a.width, _b = _a.rotateInterval, rotateInterval = _b === void 0 ? 0 : _b, _c = _a.widgetType, widgetType = _c === void 0 ? WidgetType.Banner : _c, _d = _a.buttonText, buttonText = _d === void 0 ? "Get Link" : _d, _e = _a.buttonTextAuth, buttonTextAuth = _e === void 0 ? "Log In" : _e, _f = _a.buttonTextDone, buttonTextDone = _f === void 0 ? "Copied" : _f, _g = _a.buttonTextLoading, buttonTextLoading = _g === void 0 ? "Loading" : _g, target = _a.target;
     if (!target) {
         target = window.location.href;
     }
-    var _h = (0, tonicpow_1.useTonicPow)(), tonicPow = _h.tonicPow, widgets = _h.widgets, getWidget = _h.getWidget;
-    var _j = (0, react_1.useState)(width || 0), imgWidth = _j[0], setImgWidth = _j[1];
-    var _k = (0, react_1.useState)(height || 0), imgHeight = _k[0], setImgHeight = _k[1];
-    var _l = (0, react_1.useState)(), wasUnmounted = _l[0], setWasUnmounted = _l[1];
-    var _m = (0, react_1.useState)(common_1.FetchStatus.Idle), widgetStatus = _m[0], setWidgetStatus = _m[1];
-    var unmounted = (0, react_1.useRef)(false);
+    var _h = useTonicPow(), tonicPow = _h.tonicPow, widgets = _h.widgets, getWidget = _h.getWidget;
+    var _j = useState(width || 0), imgWidth = _j[0], setImgWidth = _j[1];
+    var _k = useState(height || 0), imgHeight = _k[0], setImgHeight = _k[1];
+    var _l = useState(), wasUnmounted = _l[0], setWasUnmounted = _l[1];
+    var _m = useState(FetchStatus.Idle), widgetStatus = _m[0], setWidgetStatus = _m[1];
+    var unmounted = useRef(false);
     // use the useEffect cleanup function to know if the component (page) was unmounted
     // so we don't update the state afterwards and thereby introduce a memory leak
-    (0, react_1.useEffect)(function () { return function () {
+    useEffect(function () { return function () {
         unmounted.current = true;
-        setWidgetStatus(common_1.FetchStatus.Idle);
+        setWidgetStatus(FetchStatus.Idle);
         setWasUnmounted(true);
     }; }, []);
-    var loadedWidget = (0, react_1.useMemo)(function () {
+    var loadedWidget = useMemo(function () {
         return getWidget(widgetId);
     }, [getWidget, widgetId]);
-    (0, react_1.useEffect)(function () {
+    useEffect(function () {
         var load = function () { return __awaiter(void 0, void 0, void 0, function () {
             var e_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         console.log("loading");
-                        setWidgetStatus(common_1.FetchStatus.Loading);
+                        setWidgetStatus(FetchStatus.Loading);
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
@@ -96,21 +75,21 @@ var Widget = function (_a) {
                         _a.sent();
                         if (rotateInterval) {
                             setTimeout(function () {
-                                setWidgetStatus(common_1.FetchStatus.Idle);
+                                setWidgetStatus(FetchStatus.Idle);
                             }, rotateInterval * 1000);
                         }
                         return [3 /*break*/, 4];
                     case 3:
                         e_1 = _a.sent();
                         console.log("Failed to load widget", e_1);
-                        setWidgetStatus(common_1.FetchStatus.Error);
+                        setWidgetStatus(FetchStatus.Error);
                         return [3 /*break*/, 4];
                     case 4: return [2 /*return*/];
                 }
             });
         }); };
         console.log("should we load?", widgetId);
-        if (!!widgetId && widgetStatus === common_1.FetchStatus.Idle) {
+        if (!!widgetId && widgetStatus === FetchStatus.Idle) {
             load();
         }
     }, [
@@ -124,25 +103,25 @@ var Widget = function (_a) {
         width,
         location,
     ]);
-    (0, react_1.useEffect)(function () {
+    useEffect(function () {
         if (loadedWidget) {
             var height_1 = loadedWidget.height, width_1 = loadedWidget.width;
             if (widgetType === "banner") {
                 setImgHeight(height_1);
                 setImgWidth(width_1);
-                setWidgetStatus(common_1.FetchStatus.Success);
+                setWidgetStatus(FetchStatus.Success);
             }
         }
     }, [getWidget, loadedWidget, widgetId, widgetStatus, widgetType, widgets]);
-    var renderShareButton = (0, react_1.useMemo)(function () {
-        return (react_1.default.createElement("div", { className: "tonicpow-widget h-12 w-full", "data-widget-type": "share-button", "data-button-id": widgetId, "data-environment": "production", "data-width": width, "data-height": height, "data-get-link-text": buttonText, "data-auth-text": buttonTextAuth, "data-done-text": buttonTextDone, "data-error-text": "Error", "data-loading-text": buttonTextLoading, "data-target": target }));
+    var renderShareButton = useMemo(function () {
+        return (React.createElement("div", { className: "tonicpow-widget h-12 w-full", "data-widget-type": "share-button", "data-button-id": widgetId, "data-environment": "production", "data-width": width, "data-height": height, "data-get-link-text": buttonText, "data-auth-text": buttonTextAuth, "data-done-text": buttonTextDone, "data-error-text": "Error", "data-loading-text": buttonTextLoading, "data-target": target }));
     }, [widgetId, buttonText, buttonTextAuth, buttonTextDone, buttonTextLoading]);
-    var renderDisplayWidget = (0, react_1.useMemo)(function () { return (react_1.default.createElement(react_1.default.Fragment, null,
-        react_1.default.createElement("div", { className: "flex w-full p-4" }, common_1.FetchStatus.Error !== widgetStatus && (react_1.default.createElement("div", { className: "transition duration-700 ease-in-out ".concat(widgetStatus === common_1.FetchStatus.Idle ||
-                widgetStatus === common_1.FetchStatus.Loading
+    var renderDisplayWidget = useMemo(function () { return (React.createElement(React.Fragment, null,
+        React.createElement("div", { className: "flex w-full p-4" }, FetchStatus.Error !== widgetStatus && (React.createElement("div", { className: "transition duration-700 ease-in-out ".concat(widgetStatus === FetchStatus.Idle ||
+                widgetStatus === FetchStatus.Loading
                 ? "opacity-0"
                 : "opacity-100", " tonicpow-widget ").concat(className ? className : ""), "data-widget-id": "".concat(widgetId), style: { width: imgWidth, height: imgHeight } }))))); }, [widgetId, imgWidth, imgHeight, className, widgetStatus]);
     return widgetType === "share" ? renderShareButton : renderDisplayWidget;
 };
-exports.default = Widget;
-//# sourceMappingURL=widget.js.map
+export default Widget;
+//# sourceMappingURL=index.js.map

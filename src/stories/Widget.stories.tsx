@@ -1,7 +1,7 @@
 import { ComponentMeta, Story } from "@storybook/react";
 import React from "react";
 import TonicPowWidget, { WidgetProps } from "../../dist/esm/";
-import { TonicPowProvider } from "../context/tonicpow";
+import { TonicPowProvider } from "../../dist/esm/context/tonicpow";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {

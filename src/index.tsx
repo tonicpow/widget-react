@@ -1,5 +1,5 @@
 import React from "react";
-import Widget from "./components/widget";
+import Widget from "./components/Widget";
 import { TonicPowProvider } from "./context/tonicpow";
 
 export enum WidgetType {

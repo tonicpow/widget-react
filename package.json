@@ -66,8 +66,8 @@
     "babel-loader": "^8.2.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "typescript": "^4.5.4",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "typescript": "^4.5.4"
   },
   "dependencies": {
     "@tonicpow/widget": "^0.0.14"

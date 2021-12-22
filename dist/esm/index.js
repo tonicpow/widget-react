@@ -1,5 +1,5 @@
 import React from "react";
-import Widget from "./components/widget";
+import Widget from "./components/Widget";
 import { TonicPowProvider } from "./context/tonicpow";
 export var WidgetType;
 (function (WidgetType) {
@@ -8,9 +8,6 @@ export var WidgetType;
 })(WidgetType || (WidgetType = {}));
 var TonicPowWidget = function (_a) {
     var widgetId = _a.widgetId;
-    React.useEffect(function () {
-        console.log("floobygoo", { widgetId: widgetId });
-    }, [widgetId]);
     return (React.createElement(TonicPowProvider, null,
         React.createElement(Widget, { widgetId: widgetId })));
 };

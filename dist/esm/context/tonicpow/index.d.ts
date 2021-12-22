@@ -1,5 +1,5 @@
 import React from "react";
-import TonicPow from "types/tonicpow-js";
+import TonicPow from "../../types/tonicpow-js";
 declare type ContextValue = {
     sessionId: string | undefined;
     tonicPow: typeof TonicPow | undefined;

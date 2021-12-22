@@ -1,7 +1,7 @@
-import { WidgetProps, WidgetType } from "index";
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { useTonicPow } from "../context/tonicpow";
-import { FetchStatus } from "../types/common";
+import { useTonicPow } from "../../context/tonicpow";
+import { WidgetProps, WidgetType } from "../../index";
+import { FetchStatus } from "../../types/common";
 
 const Widget: React.FC<WidgetProps> = ({
   className,

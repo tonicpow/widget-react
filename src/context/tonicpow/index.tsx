@@ -8,7 +8,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import TonicPow from "types/tonicpow-js";
+import TonicPow from "../../types/tonicpow-js";
 import { useLocalStorage } from "../../utils/storage";
 
 type ContextValue = {

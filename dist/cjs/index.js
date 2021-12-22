@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WidgetType = void 0;
 var react_1 = __importDefault(require("react"));
-var widget_1 = __importDefault(require("./components/widget"));
+var Widget_1 = __importDefault(require("./components/Widget"));
 var tonicpow_1 = require("./context/tonicpow");
 var WidgetType;
 (function (WidgetType) {
@@ -14,11 +14,8 @@ var WidgetType;
 })(WidgetType = exports.WidgetType || (exports.WidgetType = {}));
 var TonicPowWidget = function (_a) {
     var widgetId = _a.widgetId;
-    react_1.default.useEffect(function () {
-        console.log("floobygoo", { widgetId: widgetId });
-    }, [widgetId]);
     return (react_1.default.createElement(tonicpow_1.TonicPowProvider, null,
-        react_1.default.createElement(widget_1.default, { widgetId: widgetId })));
+        react_1.default.createElement(Widget_1.default, { widgetId: widgetId })));
 };
 exports.default = TonicPowWidget;
 //# sourceMappingURL=index.js.map
