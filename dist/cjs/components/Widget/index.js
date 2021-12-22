@@ -78,6 +78,7 @@ var Widget = function (_a) {
         setWasUnmounted(true);
     }; }, []);
     var loadedWidget = (0, react_1.useMemo)(function () {
+        console.log("should we get it?", widgetId);
         return getWidget(widgetId);
     }, [getWidget, widgetId]);
     (0, react_1.useEffect)(function () {
@@ -111,6 +112,7 @@ var Widget = function (_a) {
         }); };
         console.log("should we load?", widgetId);
         if (!!widgetId && widgetStatus === common_1.FetchStatus.Idle) {
+            console.log("calling load");
             load();
         }
     }, [
@@ -126,6 +128,7 @@ var Widget = function (_a) {
     ]);
     (0, react_1.useEffect)(function () {
         if (loadedWidget) {
+            console.log("widget is loaded");
             var height_1 = loadedWidget.height, width_1 = loadedWidget.width;
             if (widgetType === "banner") {
                 setImgHeight(height_1);

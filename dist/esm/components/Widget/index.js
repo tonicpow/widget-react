@@ -57,6 +57,7 @@ var Widget = function (_a) {
         setWasUnmounted(true);
     }; }, []);
     var loadedWidget = useMemo(function () {
+        console.log("should we get it?", widgetId);
         return getWidget(widgetId);
     }, [getWidget, widgetId]);
     useEffect(function () {
@@ -90,6 +91,7 @@ var Widget = function (_a) {
         }); };
         console.log("should we load?", widgetId);
         if (!!widgetId && widgetStatus === FetchStatus.Idle) {
+            console.log("calling load");
             load();
         }
     }, [
@@ -105,6 +107,7 @@ var Widget = function (_a) {
     ]);
     useEffect(function () {
         if (loadedWidget) {
+            console.log("widget is loaded");
             var height_1 = loadedWidget.height, width_1 = loadedWidget.width;
             if (widgetType === "banner") {
                 setImgHeight(height_1);

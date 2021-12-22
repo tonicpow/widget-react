@@ -57,6 +57,7 @@ export const TonicPowProvider: React.FC<{}> = (props) => {
 
   const getWidget = useCallback(
     (widgetId: string) => {
+      console.log("getting widget", widgetId);
       return widgets.filter((w) => w.id === widgetId)[0] || null;
     },
     [widgets]

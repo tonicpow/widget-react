@@ -43,6 +43,7 @@ const Widget: React.FC<WidgetProps> = ({
   );
 
   const loadedWidget = useMemo(() => {
+    console.log("should we get it?", widgetId);
     return getWidget(widgetId);
   }, [getWidget, widgetId]);
 
@@ -66,6 +67,7 @@ const Widget: React.FC<WidgetProps> = ({
 
     console.log("should we load?", widgetId);
     if (!!widgetId && widgetStatus === FetchStatus.Idle) {
+      console.log("calling load");
       load();
     }
   }, [
@@ -82,6 +84,7 @@ const Widget: React.FC<WidgetProps> = ({
 
   useEffect(() => {
     if (loadedWidget) {
+      console.log("widget is loaded");
       const { height, width } = loadedWidget;
       if (widgetType === "banner") {
         setImgHeight(height);

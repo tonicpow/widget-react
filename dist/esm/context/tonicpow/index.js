@@ -42,6 +42,7 @@ export var TonicPowProvider = function (props) {
     }, [widgets]);
     var tncpwSessionQueryParam = useRef(parse((_a = window.location.search) === null || _a === void 0 ? void 0 : _a.slice(1)).tncpw_session);
     var getWidget = useCallback(function (widgetId) {
+        console.log("getting widget", widgetId);
         return widgets.filter(function (w) { return w.id === widgetId; })[0] || null;
     }, [widgets]);
     useEffect(function () {
