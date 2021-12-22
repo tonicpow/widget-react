@@ -78,7 +78,6 @@ var Widget = function (_a) {
         setWasUnmounted(true);
     }; }, []);
     var loadedWidget = (0, react_1.useMemo)(function () {
-        console.log("should we get it?", widgetId);
         return getWidget(widgetId);
     }, [getWidget, widgetId]);
     (0, react_1.useEffect)(function () {
@@ -87,7 +86,6 @@ var Widget = function (_a) {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        console.log("loading");
                         setWidgetStatus(common_1.FetchStatus.Loading);
                         _a.label = 1;
                     case 1:
@@ -103,16 +101,13 @@ var Widget = function (_a) {
                         return [3 /*break*/, 4];
                     case 3:
                         e_1 = _a.sent();
-                        console.log("Failed to load widget", e_1);
                         setWidgetStatus(common_1.FetchStatus.Error);
                         return [3 /*break*/, 4];
                     case 4: return [2 /*return*/];
                 }
             });
         }); };
-        console.log("should we load?", widgetId);
         if (!!widgetId && widgetStatus === common_1.FetchStatus.Idle) {
-            console.log("calling load");
             load();
         }
     }, [

@@ -13,9 +13,9 @@ var WidgetType;
     WidgetType["ShareButton"] = "share";
 })(WidgetType = exports.WidgetType || (exports.WidgetType = {}));
 var TonicPowWidget = function (_a) {
-    var widgetId = _a.widgetId;
+    var widgetId = _a.widgetId, rotateInterval = _a.rotateInterval;
     return (react_1.default.createElement(tonicpow_1.TonicPowProvider, null,
-        react_1.default.createElement(Widget_1.default, { widgetId: widgetId })));
+        react_1.default.createElement(Widget_1.default, { widgetId: widgetId, rotateInterval: rotateInterval })));
 };
 exports.default = TonicPowWidget;
 //# sourceMappingURL=index.js.map
