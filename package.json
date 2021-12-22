@@ -1,6 +1,6 @@
 {
   "name": "@tonicpow/widget-react",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Official react component for rendering TonicPow Widgets and Share buttons",
   "author": {
     "name": "TonicPow",
