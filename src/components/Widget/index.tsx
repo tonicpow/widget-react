@@ -43,13 +43,11 @@ const Widget: React.FC<WidgetProps> = ({
   );
 
   const loadedWidget = useMemo(() => {
-    console.log("should we get it?", widgetId);
     return getWidget(widgetId);
   }, [getWidget, widgetId]);
 
   useEffect(() => {
     const load = async () => {
-      console.log("loading");
       setWidgetStatus(FetchStatus.Loading);
       try {
         await tonicPow?.load();
@@ -60,14 +58,11 @@ const Widget: React.FC<WidgetProps> = ({
         }
         //}
       } catch (e) {
-        console.log("Failed to load widget", e);
         setWidgetStatus(FetchStatus.Error);
       }
     };
 
-    console.log("should we load?", widgetId);
     if (!!widgetId && widgetStatus === FetchStatus.Idle) {
-      console.log("calling load");
       load();
     }
   }, [

@@ -21,4 +21,5 @@ export const Primary = Template.bind({});
 Primary.args = {
   label: "Widget",
   widgetId: "30934462fd0fc42e8f2775683974b432b6fdd7e29daee99551570e29f815cc75",
+  rotateInterval: 10,
 };

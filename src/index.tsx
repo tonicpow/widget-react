@@ -23,10 +23,13 @@ export interface WidgetProps {
   target?: string;
 }
 
-const TonicPowWidget: React.FC<WidgetProps> = ({ widgetId }) => {
+const TonicPowWidget: React.FC<WidgetProps> = ({
+  widgetId,
+  rotateInterval,
+}) => {
   return (
     <TonicPowProvider>
-      <Widget widgetId={widgetId} />
+      <Widget widgetId={widgetId} rotateInterval={rotateInterval} />
     </TonicPowProvider>
   );
 };
