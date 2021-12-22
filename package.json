@@ -2,7 +2,6 @@
   "name": "@tonicpow/widget-react",
   "version": "0.0.1",
   "description": "Official react component for rendering TonicPow Widgets and Share buttons",
-  "private": "false",
   "author": {
     "name": "TonicPow",
     "email": "support@tonicpow.com",
