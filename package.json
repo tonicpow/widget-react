@@ -1,6 +1,6 @@
 {
   "name": "@tonicpow/widget-react",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Official react component for rendering TonicPow Widgets and Share buttons",
   "author": {
     "name": "TonicPow",
@@ -52,7 +52,6 @@
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
-  "typings": "./src/types/**/*.d.ts",
   "devDependencies": {
     "@storybook/addon-actions": "^6.4.9",
     "@storybook/addon-essentials": "^6.4.9",

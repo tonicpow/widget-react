@@ -1,4 +1,3 @@
-import * as tPow from "@tonicpow/widget";
 import { parse } from "querystring";
 import React, {
   useCallback,
@@ -57,16 +56,14 @@ export const TonicPowProvider: React.FC<{}> = (props) => {
 
   const getWidget = useCallback(
     (widgetId: string) => {
-      console.log("getting widget", widgetId);
       return widgets.filter((w) => w.id === widgetId)[0] || null;
     },
     [widgets]
   );
 
   useEffect(() => {
-    tPow.options = { onWidgetLoaded };
-
-    setTonicPow(tPow);
+    (window as any).TonicPow.options = { onWidgetLoaded };
+    setTonicPow((window as any).TonicPow);
     setReady(true);
   }, []);
 

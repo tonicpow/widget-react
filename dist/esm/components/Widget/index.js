@@ -66,12 +66,14 @@ var Widget = function (_a) {
                 switch (_a.label) {
                     case 0:
                         setWidgetStatus(FetchStatus.Loading);
+                        console.log("loading", tonicPow);
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
                         return [4 /*yield*/, (tonicPow === null || tonicPow === void 0 ? void 0 : tonicPow.load())];
                     case 2:
                         _a.sent();
+                        setWidgetStatus(FetchStatus.Success);
                         if (rotateInterval) {
                             setTimeout(function () {
                                 setWidgetStatus(FetchStatus.Idle);
@@ -80,13 +82,14 @@ var Widget = function (_a) {
                         return [3 /*break*/, 4];
                     case 3:
                         e_1 = _a.sent();
+                        console.log("error", e_1);
                         setWidgetStatus(FetchStatus.Error);
                         return [3 /*break*/, 4];
                     case 4: return [2 /*return*/];
                 }
             });
         }); };
-        if (!!widgetId && widgetStatus === FetchStatus.Idle) {
+        if (widgetStatus === FetchStatus.Idle) {
             load();
         }
     }, [

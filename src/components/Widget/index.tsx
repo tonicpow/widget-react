@@ -49,8 +49,10 @@ const Widget: React.FC<WidgetProps> = ({
   useEffect(() => {
     const load = async () => {
       setWidgetStatus(FetchStatus.Loading);
+      console.log("loading", tonicPow);
       try {
         await tonicPow?.load();
+        setWidgetStatus(FetchStatus.Success);
         if (rotateInterval) {
           setTimeout(() => {
             setWidgetStatus(FetchStatus.Idle);
@@ -58,11 +60,12 @@ const Widget: React.FC<WidgetProps> = ({
         }
         //}
       } catch (e) {
+        console.log("error", e);
         setWidgetStatus(FetchStatus.Error);
       }
     };
 
-    if (!!widgetId && widgetStatus === FetchStatus.Idle) {
+    if (widgetStatus === FetchStatus.Idle) {
       load();
     }
   }, [

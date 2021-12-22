@@ -18,7 +18,6 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
-import * as tPow from "@tonicpow/widget";
 import { parse } from "querystring";
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState, } from "react";
 import { useLocalStorage } from "../../utils/storage";
@@ -42,12 +41,11 @@ export var TonicPowProvider = function (props) {
     }, [widgets]);
     var tncpwSessionQueryParam = useRef(parse((_a = window.location.search) === null || _a === void 0 ? void 0 : _a.slice(1)).tncpw_session);
     var getWidget = useCallback(function (widgetId) {
-        console.log("getting widget", widgetId);
         return widgets.filter(function (w) { return w.id === widgetId; })[0] || null;
     }, [widgets]);
     useEffect(function () {
-        tPow.options = { onWidgetLoaded: onWidgetLoaded };
-        setTonicPow(tPow);
+        window.TonicPow.options = { onWidgetLoaded: onWidgetLoaded };
+        setTonicPow(window.TonicPow);
         setReady(true);
     }, []);
     useEffect(function () {
