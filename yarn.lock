@@ -2223,10 +2223,10 @@
     resolve-from "^5.0.0"
     store2 "^2.12.0"
 
-"@tonicpow/widget@^0.0.14":
-  version "0.0.14"
-  resolved "https://registry.yarnpkg.com/@tonicpow/widget/-/widget-0.0.14.tgz#e7ce1a08045072f5621f9505025be06ebeb66c40"
-  integrity sha512-bXHxl8Z6K3Jypt0IbepP/F0la5pXqWqUEEXoqrkOnZKEqFyDvBggYDf81JstKNrSGcn4QZVQe3vnxX0a+4bQ2g==
+"@tonicpow/widget@^0.0.15":
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/@tonicpow/widget/-/widget-0.0.15.tgz#3dbfacb32ed8a57069ad73fdd026e2f94f0375f4"
+  integrity sha512-+prV/1oG6WBWbQbsn9fAAzb5JT7hhvJzDkIKcRSGUNs4Vem8lKUt7GL+zHMldGriF4m0lyIOmIlaZ/2X7+H8jg==
 
 "@types/color-convert@^2.0.0":
   version "2.0.0"

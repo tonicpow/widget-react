@@ -66,6 +66,6 @@
     "typescript": "^4.5.4"
   },
   "dependencies": {
-    "@tonicpow/widget": "^0.0.14"
+    "@tonicpow/widget": "^0.0.15"
   }
 }
