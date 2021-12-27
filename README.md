@@ -41,10 +41,10 @@ Read more about the [TonicPow API](https://docs.tonicpow.com) platform.
 <summary><strong><code>Supported Browsers</code></strong></summary>
 
 TonicPow supports all commonly used browsers. Below is a list of popular browsers and their minimum supported version.
-If we're missing a browser, suggest one [via an issue](https://github.com/tonicpow/widget/issues/new).
+If we're missing a browser, suggest one [via an issue](https://github.com/tonicpow/widget-react/issues/new).
 
 | Browser | Platform | Min Version |
-| :------ | :------- | :---------- |
+|:--------|:---------|:------------|
 | Android | Mobile   | 67.0        |
 | Bottle  | Desktop  | 0.1         |
 | Brave   | Desktop  | 55.0        |
@@ -140,14 +140,14 @@ We are using it! Visit [our website](https://tonicpow.com) to see it in action.
 ## Maintainers
 
 | [<img src="https://github.com/mrz1836.png" height="50" alt="MrZ" />](https://github.com/mrz1836) | [<img src="https://github.com/rohenaz.png" height="50" alt="Satchmo" />](https://github.com/rohenaz) |
-| :----------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------: |
+|:------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------:|
 |                                [MrZ](https://github.com/mrz1836)                                 |                                [Satchmo](https://github.com/rohenaz)                                 |
 
 <br/>
 
 ## Contributing
 
-View the [contributing guidelines](CONTRIBUTING.md) and follow the [code of conduct](CODE_OF_CONDUCT.md).
+View the [contributing guidelines](.github/CONTRIBUTING.md) and follow the [code of conduct](.github/CODE_OF_CONDUCT.md).
 
 ### How can I help?
 
