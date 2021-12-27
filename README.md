@@ -1,9 +1,11 @@
 # Widget (React Component)
-
 > Easy integration using React
 
 [![last commit](https://img.shields.io/github/last-commit/tonicpow/widget-react.svg?style=flat&v=1)](https://github.com/tonicpow/widget-react/commits/master)
 [![version](https://img.shields.io/github/release-pre/tonicpow/widget-react.svg?style=flat&v=1)](https://github.com/tonicpow/widget-react/releases)
+[![Build Status](https://img.shields.io/github/workflow/status/tonicpow/widget-react/widget-ci?logo=github&v=1)](https://github.com/tonicpow/widget-react/actions)
+[![Mergify Status](https://img.shields.io/endpoint.svg?url=https://gh.mergify.io/badges/tonicpow/widget-react&style=flat&v=1)](https://mergify.io)
+<br>
 [![Sponsor](https://img.shields.io/badge/sponsor-TonicPow-181717.svg?logo=github&style=flat&v=1)](https://github.com/sponsors/TonicPow)
 [![slack](https://img.shields.io/badge/slack-tonicpow-orange.svg?style=flat&v=1)](https://atlantistic.slack.com/app_redirect?channel=tonicpow)
 [![npm](https://img.shields.io/npm/v/@tonicpow/widget-react?v=1)](https://www.npmjs.com/package/@tonicpow/widget-react)
@@ -21,9 +23,10 @@
 - [License](#license)
 
 ## Features
+- Create [banner widgets](https://tonicpow.com/guides/promoters/create-widget)
+- Create [share button](https://tonicpow.com/guides/developers/share-buttons) widgets
 
-- Create banner widgets
-- Create share button widgets
+<br/>
 
 ## Installation
 
