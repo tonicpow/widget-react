@@ -77,3 +77,6 @@ todo.md
 # Deployment
 release
 packaged.yaml
+
+# Ignore yarn lock files
+yarn.lock
