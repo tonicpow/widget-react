@@ -28,7 +28,7 @@
 ## Installation
 
 ```shell script
-yarn
+npm
 ```
 
 <br/>
@@ -123,7 +123,7 @@ Always use the language's best practices and don't optimize early :P
 To see the available widgets and run in standalone mode, we've conveniently added all components to storybook.
 
 ```shell script
-yarn storybook
+npm storybook
 ```
 
 To use this in your project, just do
