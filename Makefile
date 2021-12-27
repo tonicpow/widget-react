@@ -45,6 +45,9 @@ lint: ## Runs the standard-js lint tool
 outdated: ## Checks for outdated packages via npm
 	@npm outdated
 
+publish: ## Will publish the version to npm
+	@npm run deploy
+
 release:: ## Deploy to npm
 	@npm run deploy
 
