@@ -22,7 +22,7 @@
   },
   "homepage": "https://docs.tonicpow.com",
   "scripts": {
-    "build": "npm cache clean && npm build:esm && npm build:cjs",
+    "build": "npm build:esm && npm build:cjs",
     "build-storybook": "build-storybook",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
     "build:esm": "tsc --pretty",
