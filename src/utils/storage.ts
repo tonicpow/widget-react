@@ -121,7 +121,7 @@ const useStorage = <T>(
   });
 
   const setValue = useCallback(
-    (value) => {
+    (value: any) => {
       try {
         setStoredValue(value);
         saveInStorage(storageType, storageKey, value);

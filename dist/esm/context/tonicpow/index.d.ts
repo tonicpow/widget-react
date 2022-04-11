@@ -7,6 +7,6 @@ declare type ContextValue = {
     widgets: TonicPow.Widget[];
     getWidget: (widgetId: string) => TonicPow.Widget;
 };
-export declare const TonicPowProvider: React.FC<{}>;
+export declare const TonicPowProvider: React.FC<React.PropsWithChildren<{}>>;
 export declare const useTonicPow: () => ContextValue;
 export {};
