@@ -44,9 +44,12 @@ export var TonicPowProvider = function (props) {
         return widgets.filter(function (w) { return w.id === widgetId; })[0] || null;
     }, [widgets]);
     useEffect(function () {
-        window.TonicPow.options = { onWidgetLoaded: onWidgetLoaded };
-        setTonicPow(window.TonicPow);
-        setReady(true);
+        var tonicPow = window.TonicPow;
+        if (tonicPow) {
+            tonicPow.options = { onWidgetLoaded: onWidgetLoaded };
+            setTonicPow(window.TonicPow);
+            setReady(true);
+        }
     }, []);
     useEffect(function () {
         if ((tncpwSessionQueryParam === null || tncpwSessionQueryParam === void 0 ? void 0 : tncpwSessionQueryParam.current) != null) {
@@ -61,8 +64,7 @@ export var TonicPowProvider = function (props) {
         widgets: widgets,
         getWidget: getWidget,
     }); }, [sessionId, ready, tonicPow, widgets, getWidget]);
-    return (React.createElement(React.Fragment, null,
-        React.createElement(TonicPowContext.Provider, __assign({ value: value }, props))));
+    return (React.createElement(TonicPowContext.Provider, __assign({ value: value }, props), props.children));
 };
 export var useTonicPow = function () {
     var context = useContext(TonicPowContext);

@@ -22,7 +22,7 @@ const TonicPowContext = React.createContext<ContextValue | undefined>(
   undefined
 );
 
-export const TonicPowProvider: React.FC<{}> = (props) => {
+export const TonicPowProvider: React.FC<React.PropsWithChildren<{}>> = (props) => {
   const [tonicPow, setTonicPow] = useState<typeof TonicPow | undefined>();
   const [ready, setReady] = useState<boolean>(false);
   const [widgets, setWidgets] = useState<TonicPow.Widget[]>([]);
@@ -62,9 +62,12 @@ export const TonicPowProvider: React.FC<{}> = (props) => {
   );
 
   useEffect(() => {
-    (window as any).TonicPow.options = { onWidgetLoaded };
-    setTonicPow((window as any).TonicPow);
-    setReady(true);
+    const tonicPow = (window as any).TonicPow;
+    if (tonicPow) {
+      tonicPow.options = { onWidgetLoaded };
+      setTonicPow((window as any).TonicPow);
+      setReady(true);
+    }
   }, []);
 
   useEffect(() => {
@@ -86,9 +89,9 @@ export const TonicPowProvider: React.FC<{}> = (props) => {
   );
 
   return (
-    <>
-      <TonicPowContext.Provider value={value} {...props} />
-    </>
+    <TonicPowContext.Provider value={value} {...props}>
+      {props.children}
+    </TonicPowContext.Provider>
   );
 };
 

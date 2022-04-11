@@ -12,7 +12,11 @@ var __assign = (this && this.__assign) || function () {
 };
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -66,9 +70,12 @@ var TonicPowProvider = function (props) {
         return widgets.filter(function (w) { return w.id === widgetId; })[0] || null;
     }, [widgets]);
     (0, react_1.useEffect)(function () {
-        window.TonicPow.options = { onWidgetLoaded: onWidgetLoaded };
-        setTonicPow(window.TonicPow);
-        setReady(true);
+        var tonicPow = window.TonicPow;
+        if (tonicPow) {
+            tonicPow.options = { onWidgetLoaded: onWidgetLoaded };
+            setTonicPow(window.TonicPow);
+            setReady(true);
+        }
     }, []);
     (0, react_1.useEffect)(function () {
         if ((tncpwSessionQueryParam === null || tncpwSessionQueryParam === void 0 ? void 0 : tncpwSessionQueryParam.current) != null) {
@@ -83,8 +90,7 @@ var TonicPowProvider = function (props) {
         widgets: widgets,
         getWidget: getWidget,
     }); }, [sessionId, ready, tonicPow, widgets, getWidget]);
-    return (react_1.default.createElement(react_1.default.Fragment, null,
-        react_1.default.createElement(TonicPowContext.Provider, __assign({ value: value }, props))));
+    return (react_1.default.createElement(TonicPowContext.Provider, __assign({ value: value }, props), props.children));
 };
 exports.TonicPowProvider = TonicPowProvider;
 var useTonicPow = function () {
