@@ -21,14 +21,15 @@ ifndef REPO_BRANCH
 	override REPO_BRANCH="master"
 endif
 
-.PHONY: clean release test
-
+.PHONY: audit
 audit: ## Checks for vulnerabilities in dependencies
 	@npm audit
 
+.PHONY: build
 build: ## Builds the package for web distribution
 	@npm run build
 
+.PHONY: clean
 clean: ## Remove previous builds and any test cache data
 	@npm run clean
 	@if [ -d $(DISTRIBUTIONS_DIR) ]; then rm -r $(DISTRIBUTIONS_DIR); fi
@@ -36,20 +37,26 @@ clean: ## Remove previous builds and any test cache data
 	@if [ -d build_cache ]; then rm -r build_cache; fi
 	@if [ -d node_modules ]; then rm -r node_modules; fi
 
+.PHONY: install
 install: ## Installs the dependencies for the package
 	@npm install
 
+.PHONY: lint
 lint: ## Runs the standard-js lint tool
 	@npm run lint
 
+.PHONY: outdated
 outdated: ## Checks for outdated packages via npm
 	@npm outdated
 
+.PHONY: publish
 publish: ## Will publish the version to npm
 	@npm run deploy
 
+.PHONY: release
 release:: ## Deploy to npm
 	@npm run deploy
 
+.PHONY: test
 test: ## Runs all tests
 	@npm run test
