@@ -18,7 +18,7 @@
     "noImplicitThis": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
+    "ignoreDeprecations": "5.0",
     "allowSyntheticDefaultImports": true,
     "typeRoots": ["./src/types/**/*", "./node_modules/@types"],
     "types": ["node"],
