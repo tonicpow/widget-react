@@ -54,7 +54,7 @@
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
   "devDependencies": {
-    "@storybook/addon-actions": "^7.0.2",
+    "@storybook/addon-actions": "^8.0.2",
     "@storybook/addon-essentials": "^8.0.2",
     "@storybook/addon-links": "^8.0.1",
     "@storybook/react": "^7.0.2",
